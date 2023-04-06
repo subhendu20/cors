@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const middleware = require('body-parser')
 const dotenv = require('dotenv').config()
 const api = require('./Schema/language')
-const cors = require('cors')
+const cors = require('cors')//-> import cors
 
 
 const { MongoClient } = require('mongodb')
@@ -18,11 +18,7 @@ const app = express()
 // --------------------------------database connection-------------------------------------------
 
 
-// MongoClient.connect(connectionString, { useNewUrlParser: true }).then(()=>{
-//           console.log("connected")
-// }).catch((e)=>{
-//           console.log(e)
-// })
+
 
 mongoose.connect(connectionString ,{ useNewUrlParser: true ,
            useUnifiedTopology:true
@@ -59,7 +55,7 @@ app.post('/postdata',(req,res)=>{
 })
 
 
-
+//use cors as middleware for single request
 app.get('/api',cors(),async(req,res)=>{
           const a  = await api.find({})
           res.send({"article":a})
