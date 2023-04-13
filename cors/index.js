@@ -6,7 +6,7 @@ const api = require('./Schema/language')
 const cors = require('cors')//-> import cors
 
 
-const { MongoClient } = require('mongodb')
+
 const connectionString = process.env.DB; //->add your database link
 
 
@@ -60,6 +60,12 @@ app.get('/api',cors(),async(req,res)=>{
           const a  = await api.find({})
           res.send({"article":a})
 })
+// you can configure up your cors middleware according to your need
+// router.use(cors({
+//           origin:"*",    //origin domain.If you want to allow a pariticular domain then replace * with that domain name.* accept all the domain
+//           methods:["POST","GET","UPDATE"], //methods
+//           withcredentials:true   //Accept cookies
+// }))
 
 
 
